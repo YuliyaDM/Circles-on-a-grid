@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+    <canvas id="canvas1"></canvas>
+    <div class="changing">
+        <div class="colors">
+            <div class="color">
+                <input type="color" class="changeColor c1" value="#fd5901" onchange="changeColor(event)">
+                <div class="text">#fd5901</div>
+            </div>
+            <div class="color">
+                <input type="color" class="changeColor c2" value="#f78104" onchange="changeColor(event)">
+                <div class="text">#f78104</div>
+            </div>
+            <div class="color">
+                <input type="color" class="changeColor c3" value="#faab36" onchange="changeColor(event)">
+                <div class="text">#faab36</div>
+            </div>
+            <div class="color">
+                <input type="color" class="changeColor c4" value="#249ea0" onchange="changeColor(event)">
+                <div class="text">#249ea0</div>
+            </div>
+            <div class="color">
+                <input type="color" class="changeColor c5" value="#008083" onchange="changeColor(event)">
+                <div class="text">#008083</div>
+            </div>
+            <div class="color">
+                <input type="color" class="changeColor c6" value="#005f60" onchange="changeColor(event)">
+                <div class="text">#005f60</div>
+            </div>
+            <!-- 
+                did you open the link 'check the code'?
+            -->
+        </div>
+    </div>
+    <div class="check">
+        <a 
+        href="scream/index.html" 
+        title="are you waiting for something interesting?"
+        target="_blank"
+        >
+            Check the code
+        </a>
+    </div>
+    <button id="screenshot">Click me to make screenshot!</button>
+    <script src="scripts/index.js"></script>
+    <script src="scripts/html2canvas.min.js"></script>
+    <script>
+        function capture() {
+            const captureElement = document.querySelector('#canvas1');
+            html2canvas(captureElement)
+            .then(canvas => {
+                const image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+                const a = document.createElement('a')
+                const nameURL = 'circlesPattern.png';
+                a.setAttribute('download', nameURL);
+                a.setAttribute('href', image)
+                a.click();
+            })
+        }
+
+        const button = document.querySelector('button#screenshot');
+        button.addEventListener('click', capture);
+    </script>
+</body>
+</html>
