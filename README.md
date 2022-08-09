@@ -1,1 +1,1 @@
-# Circles-on-a-grid
+# circles-on-a-grid
